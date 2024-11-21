@@ -1,0 +1,8 @@
+CREATE TABLE Operacoes (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    A REAL NOT NULL,
+    B REAL NOT NULL,
+    OperacaoSinal NVARCHAR(50) NOT NULL,
+    Resultado REAL NOT NULL,
+    HoraOperacao DATETIME2 NOT NULL
+);

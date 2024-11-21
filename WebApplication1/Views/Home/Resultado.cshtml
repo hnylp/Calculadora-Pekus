@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Resultado da Soma";
+    <link rel="stylesheet" href="~/css/resultadopage.css"/>
+}
+
+<h2>Todas as Operações</h2>
+
+<div class="table-container">
+    @if (ViewData["TodasOperacoes"] != null)
+    {
+        var todasOperacoes = (List<WebApplication1.Models.Operacao>)ViewData["TodasOperacoes"];
+
+        if (todasOperacoes.Any())
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Valor A</th>
+                        <th>Valor B</th>
+                        <th>Operação</th>
+                        <th>Resultado</th>
+                        <th>Data e Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var operacao in todasOperacoes)
+                    {
+                        <tr>
+                            <td>@operacao.Id</td>
+                            <td>@operacao.A</td>
+                            <td>@operacao.B</td>
+                            <td>@operacao.OperacaoSinal</td>
+                            <td>@operacao.Resultado</td>
+                            <td>@operacao.HoraOperacao.ToString("dd-MM-yyyy HH:mm:ss")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Nenhuma operação encontrada.</p>
+        }
+    }
+
+    <a href="/Home/Index">Voltar</a>
+</div>

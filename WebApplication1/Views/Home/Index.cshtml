@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Calculadora - Pekus";
+    <link rel="stylesheet" href="~/css/index.css"/>
+
+}
+
+
+<form asp-action="Index" method="post">
+    <h2>Calculadora</h2>
+
+    <div class="valores">
+        <p>Valor A</p>
+        <input type="number" id="A" name="A" step="any" required />
+        <p>Valor B</p>
+        <input type="number" id="B" name="B" step="any" required />
+    </div>
+
+    <div class="simbolos">
+        <button type="submit" name="sinal" value="Adição">Adição</button>
+        <button type="submit" name="sinal" value="Subtração">Subtração</button>
+        <button type="submit" name="sinal" value="Multiplicação">Multiplicação</button>
+        <button type="submit" name="sinal" value="Divisão">Divisão</button>
+    </div>
+
+    <a href="@Url.Action("Resultado", "Home", new { idOperacao = TempData["IdOperacao"] })" id="resultado" name="resultado">Exibir resultados</a>
+
+@if (TempData["Mensagem"] != null)
+{
+    <div>
+        <p>@TempData["Mensagem"]</p>
+        <form method="get" asp-action="Resultado">
+            <input type="hidden" name="idOperacao" value="@TempData["IdOperacao"]" />
+        </form>
+    </div>
+}
+
+</form>
